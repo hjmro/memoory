@@ -58,7 +58,7 @@ function App() {
       }, 1000)
     }
 
-  }, [matchedCards, flippedCards, cards.length, checkCardMatch, timesWon, setCards]);
+  }, [matchedCards, flippedCards, cards, checkCardMatch, timesWon, setCards]);
 
   const startGame = () =>{
     setCards(generateStartingDeck)

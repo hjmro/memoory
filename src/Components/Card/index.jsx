@@ -26,7 +26,7 @@ export default function Card({id, sound, isFlipped, isMatched, name, flipCard, i
                             src={
                                 type==="image" || isMatched ?
                                     image:
-                                    "static/Images/unknown.png"
+                                    "static/Images/unknownCow.jpeg"
                                 }/>
                         <div className={"nametag"}><span>{ type=== "name" || isMatched ? name: "???"}</span></div>
                     </div>

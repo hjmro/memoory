@@ -10,3 +10,9 @@
 .cardSpot{
     width:220px;
 }
+
+@media only screen and (max-width: 600px) {
+    .cardSpot{
+        width:110px;
+    }
+  }

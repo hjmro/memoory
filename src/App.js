@@ -1,44 +1,91 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import './App.css';
-import Card from './Components/Card'
+import Board from './Components/Board'
+import {shuffle} from './helpers.js'
 
 import defaultCards from './initialData'
 
-const ambience = new Audio("/Static/Sounds/ambience.mp3")
-ambience.play()
+const ambience = new Audio("static/Sounds/Ambience.mp3")
+const reward = new Audio("static/Sounds/Reward.mp3")
+
+const generateStartingDeck = () => {
+  //Todo generate random cards 
+  return  shuffle(defaultCards)
+}
 
 function App() {
   const [ flippedCards, setFlippedCard ] = useState([])
-  const [ cards, setCards ] = useState(defaultCards)
+  const [ matchedCards, setMatchedCards ] = useState([])
+  const [ cards, setCards ] = useState([])
   const [ showGame, setShowGame] = useState(false)
+  const [ timesWon, setTimesWon] = useState(0)
 
-  const handleClickCard = (id) => setFlippedCard([...flippedCards, id])
+  const handleClickCard = (id) => {
+    if (flippedCards.length < 2 ){
+      setFlippedCard([...flippedCards, id])
+    }
+  }
+
+  const checkCardMatch = (id1, id2) => {
+    const card1 = cards.find(card => card.id === id1);
+    const card2 = cards.find(card => card.id === id2);
+    console.log("matchingCards", card1, card2, card1.name === card2.name)
+    return card1.name === card2.name;
+  }
+
+  // Main game loop
+  useEffect(() => {
+    console.log(cards)
+    if(flippedCards.length === 2){
+      const flippedCardsMatch = checkCardMatch(flippedCards[0], flippedCards[1])
+      if(flippedCardsMatch){
+        reward.play()
+        setTimeout(() => {
+          setFlippedCard([])
+          setMatchedCards([...matchedCards , ...flippedCards])
+        }, 500)
+      }else{
+        setTimeout(() => {
+          setFlippedCard([])
+        }, 500)
+      }
+    }
+    if( cards.length > 0 && matchedCards.length === cards.length){
+      setTimeout(() => {
+        setMatchedCards([]);
+        setTimesWon(timesWon + 1)
+        setShowGame(false);
+      }, 1000)
+    }
+
+  }, [matchedCards, flippedCards, cards.length, checkCardMatch, timesWon, setCards]);
 
   const startGame = () =>{
+    setCards(generateStartingDeck)
     setShowGame(true)
     ambience.play()
   }
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>MeMOOry</h1>
       </header>
-      {showGame?
-      cards.map(card => (
-        <Card
-          key={card.id}
-          sound={card.call}
-          id={card.id}
-          name={card.name}
-          isFlipped={flippedCards.includes(card.id)}
-          flipCard={() => handleClickCard(card.id)}
-          /> 
-      ))
-      :
-      <button onClick={startGame}>Start matching Moos</button>
-    }
-
-     
+      <div>
+        {showGame?
+          <Board 
+            cards={cards}
+            flippedCards={flippedCards}
+            matchedCards={matchedCards}
+            handleClickCard={handleClickCard}
+          />
+        :
+          <div>
+          {timesWon !== 0 && <h2> {`You have now matched all the Moos ${timesWon} time${timesWon > 1 ?'s':''}!`}</h2> }
+          <button onClick={startGame}>Start matching Moos</button>
+          </div>
+        }
+      </div>
     </div>
   );
 }

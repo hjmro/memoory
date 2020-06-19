@@ -1,0 +1,12 @@
+.gameBoard{
+    margin: auto;
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 880px;
+}
+
+.cardSpot{
+    width:220px;
+}

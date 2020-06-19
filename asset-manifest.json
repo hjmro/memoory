@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/memoory/static/css/main.0ee5472e.chunk.css",
-    "main.js": "/memoory/static/js/main.9cae73e5.chunk.js",
-    "main.js.map": "/memoory/static/js/main.9cae73e5.chunk.js.map",
+    "main.js": "/memoory/static/js/main.f7d70524.chunk.js",
+    "main.js.map": "/memoory/static/js/main.f7d70524.chunk.js.map",
     "runtime-main.js": "/memoory/static/js/runtime-main.d9e2eb8a.js",
     "runtime-main.js.map": "/memoory/static/js/runtime-main.d9e2eb8a.js.map",
     "static/js/2.4de8fefc.chunk.js": "/memoory/static/js/2.4de8fefc.chunk.js",
     "static/js/2.4de8fefc.chunk.js.map": "/memoory/static/js/2.4de8fefc.chunk.js.map",
     "index.html": "/memoory/index.html",
-    "precache-manifest.ab6da8269c998b604838090ee829c74e.js": "/memoory/precache-manifest.ab6da8269c998b604838090ee829c74e.js",
+    "precache-manifest.842a051a03f44479c105fdcbbfdde34b.js": "/memoory/precache-manifest.842a051a03f44479c105fdcbbfdde34b.js",
     "service-worker.js": "/memoory/service-worker.js",
     "static/css/main.0ee5472e.chunk.css.map": "/memoory/static/css/main.0ee5472e.chunk.css.map",
     "static/js/2.4de8fefc.chunk.js.LICENSE.txt": "/memoory/static/js/2.4de8fefc.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.d9e2eb8a.js",
     "static/js/2.4de8fefc.chunk.js",
     "static/css/main.0ee5472e.chunk.css",
-    "static/js/main.9cae73e5.chunk.js"
+    "static/js/main.f7d70524.chunk.js"
   ]
 }

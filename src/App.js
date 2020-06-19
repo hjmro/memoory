@@ -43,11 +43,11 @@ function App() {
         setTimeout(() => {
           setFlippedCard([])
           setMatchedCards([...matchedCards , ...flippedCards])
-        }, 500)
+        }, 1000)
       }else{
         setTimeout(() => {
           setFlippedCard([])
-        }, 500)
+        }, 1000)
       }
     }
     if( cards.length > 0 && matchedCards.length === cards.length){

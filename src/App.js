@@ -26,7 +26,7 @@ function App() {
     }
   }
 
-  const checkCardMatch = (id1, id2) => {
+  const checkCardMatch = (id1, id2, cards) => {
     const card1 = cards.find(card => card.id === id1);
     const card2 = cards.find(card => card.id === id2);
     console.log("matchingCards", card1, card2, card1.name === card2.name)
@@ -37,7 +37,7 @@ function App() {
   useEffect(() => {
     console.log(cards)
     if(flippedCards.length === 2){
-      const flippedCardsMatch = checkCardMatch(flippedCards[0], flippedCards[1])
+      const flippedCardsMatch = checkCardMatch(flippedCards[0], flippedCards[1], cards)
       if(flippedCardsMatch){
         reward.play()
         setTimeout(() => {
@@ -58,7 +58,7 @@ function App() {
       }, 1000)
     }
 
-  }, [matchedCards, flippedCards, cards, checkCardMatch, timesWon, setCards]);
+  }, [matchedCards, flippedCards, cards, timesWon, setCards]);
 
   const startGame = () =>{
     setCards(generateStartingDeck)
